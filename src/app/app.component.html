@@ -1,0 +1,40 @@
+<div class="mb-3 container">
+  <label for="exampleFormControlInput1" class="form-label">Team Name</label>
+  <input
+    type="text"
+    class="form-control"
+    id="exampleFormControlInput1"
+    placeholder="Enter the team name"
+    [(ngModel)]="teamName"
+  />
+</div>
+
+<button type="button" class="btn btn-primary add-team" (click)="addTeam()">
+  Add Team
+</button>
+
+<!-- Display the list of added teams -->
+<div class="team-list" *ngIf="teams.length > 0">
+  <ol class="list-group list-group-numbered">
+    <ng-container *ngFor="let team of teams">
+      <li class="list-group-item">{{ team }}</li>
+    </ng-container>
+  </ol>
+</div>
+
+<div class="random-generate" *ngIf="teams.length >= 4">
+  <button
+    type="button"
+    class="btn btn-primary generate-button add-team"
+    (click)="generateMatches()"
+  >
+    Generate Matches
+  </button>
+  <br />
+
+  <div class="matches" *ngFor="let match of resultsList">
+    <p>{{ match[0] }}</p>
+    <p>VS</p>
+    <p>{{ match[1] }}</p>
+  </div>
+</div>
